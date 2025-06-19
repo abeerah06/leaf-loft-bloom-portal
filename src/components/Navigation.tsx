@@ -16,9 +16,7 @@ const Navigation = () => {
             <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">Home</a>
             <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">Plant Finder</a>
             <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">Products</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">About us</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">Contact</a>
-            <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">My plants</a>
+            <a href="#" className="text-gray-700 hover:text-green-600 transition-colors">About & Contact</a>
           </div>
         </div>
       </div>
