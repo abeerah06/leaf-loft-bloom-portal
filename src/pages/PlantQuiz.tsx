@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -48,8 +47,11 @@ const PlantQuiz = () => {
     setShowResults(true);
   };
 
-  const nextStep = () => {
-    if (currentStep < totalSteps) {
+  const nextStep = async () => {
+    const fieldsToValidate = getFieldsForStep(currentStep);
+    const isValid = await form.trigger(fieldsToValidate);
+    
+    if (isValid && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -57,6 +59,21 @@ const PlantQuiz = () => {
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const getFieldsForStep = (step: number): (keyof QuizFormData)[] => {
+    switch (step) {
+      case 1:
+        return ['lightLevel', 'space', 'temperature'];
+      case 2:
+        return ['careLevel', 'wateringFrequency', 'petSafe'];
+      case 3:
+        return ['humidity', 'soilType'];
+      case 4:
+        return ['fertilizerNeed'];
+      default:
+        return [];
     }
   };
 
