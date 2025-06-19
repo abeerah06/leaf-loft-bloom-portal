@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Leaf, Heart, Droplets, Sun, Thermometer, Beaker } from 'lucide-react';
+import { Leaf, Heart, Droplets, Sun, Thermometer } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { QuizFormData } from '@/types/quiz';
 
 // Plant profiles from your dataset
 const plantProfiles = [
@@ -83,7 +83,7 @@ interface QuizData {
 }
 
 interface PlantRecommendationsProps {
-  quizData: QuizData;
+  quizData: QuizFormData;
 }
 
 const PlantRecommendations: React.FC<PlantRecommendationsProps> = ({ quizData }) => {
